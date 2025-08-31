@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KnowLawGo – Global Law, Simplified</title>
+  <style>
+    html {
+      scroll-behavior: smooth; /* Smooth scrolling */
+    }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f7f7f7;
+      color: #333;
+    }
+    header,
+    footer {
+      background-color: #004080;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    nav {
+      text-align: center;
+      padding: 10px;
+      background-color: #e6f0ff;
+    }
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #004080;
+      font-weight: bold;
+    }
+    main {
+      padding: 40px 20px;
+    }
+    section {
+      margin-bottom: 40px;
+    }
+    .countries,
+    .legal-topics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    .box {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      flex: 1 1 calc(25% - 30px);
+      min-width: 150px;
+      text-align: center;
+      cursor: pointer;
+      user-select: none;
+      transition: background-color 0.2s;
+    }
+    .box:hover {
+      background-color: #d6e4ff;
+    }
+    .country-info,
+    .topic-info {
+      display: none;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      text-align: left;
+    }
+
+    /* Popup styling */
+    .popup-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    .popup {
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      max-width: 400px;
+      width: 90%;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      animation: fadeIn 0.4s ease-in-out;
+    }
+    .popup button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      border: none;
+      background: #004080;
+      color: #fff;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .popup button:hover {
+      background: #003366;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0; transform: scale(0.9);}
+      to {opacity: 1; transform: scale(1);}
+    }
+  </style>
+
+  <script>
+    function toggleInfo(countryId) {
+      const infos = document.querySelectorAll('.country-info');
+      infos.forEach((info) => (info.style.display = 'none'));
+      const selected = document.getElementById(countryId);
+      if (selected) selected.style.display = 'block';
+    }
+
+    function toggleTopic(topicId) {
+      const topics = document.querySelectorAll('.topic-info');
+      topics.forEach((t) => (t.style.display = 'none'));
+      const selected = document.getElementById(topicId);
+      if (selected) selected.style.display = 'block';
+    }
+
+    // Show popup on load
+    window.addEventListener('load', () => {
+      document.getElementById('welcomePopup').style.display = 'flex';
+    });
+    function closePopup() {
+      document.getElementById('welcomePopup').style.display = 'none';
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <h1>KnowLawGo</h1>
+    <p>Global Law, Simplified</p>
+  </header>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#countries">Countries</a>
+    <a href="#topics">Legal Topics</a>
+    <a href="#donate">Donate</a>
+  </nav>
+
+    <main>
+    <section id="about">
+      <h2>About Us</h2>
+      <p>
+        KnowLawGo is your guide to understanding essential laws in major
+        countries around the world. Whether starting a business, finding a job,
+        or relocating—KnowLawGo simplifies the legal journey.
+      </p>
+    </section>
+
+    <section id="countries">
+      <h2>Countries Covered</h2>
+      <div class="countries">
+        <div class="box" onclick="toggleInfo('usa')">🇺🇸 USA</div>
+        <div class="box" onclick="toggleInfo('india')">🇮🇳 India</div>
+        <div class="box" onclick="toggleInfo('germany')">🇩🇪 Germany</div>
+        <div class="box" onclick="toggleInfo('japan')">🇯🇵 Japan</div>
+        <div class="box" onclick="toggleInfo('canada')">🇨🇦 Canada</div>
+        <div class="box" onclick="toggleInfo('china')">🇨🇳 China</div>
+        <div class="box" onclick="toggleInfo('southkorea')">🇰🇷 South Korea</div>
+        <div class="box" onclick="toggleInfo('russia')">🇷🇺 Russia</div>
+      </div>
+
+      <div id="usa" class="country-info">
+        <h3>🇺🇸 United States</h3>
+        <p><strong>Business:</strong> Registering an LLC or corporation varies by state. The IRS governs federal taxes, while states may have additional rules. Key laws include the Internal Revenue Code and the Sarbanes-Oxley Act for compliance.</p>
+        <p><strong>Job:</strong> Most foreign workers require visas like H-1B or O-1. U.S. labor law includes minimum wage laws (FLSA), anti-discrimination laws (Title VII), and OSHA safety standards.</p>
+        <p><strong>Living:</strong> Healthcare is mostly private; health insurance is essential. Immigrants need to comply with USCIS for residency or green cards. The Affordable Care Act regulates health coverage.</p>
+      </div>
+
+      <div id="india" class="country-info">
+        <h3>🇮🇳 India</h3>
+        <p><strong>Business:</strong> Requires GST registration, business PAN, and Udyam for MSMEs. Popular forms include sole proprietorship, partnership, and private limited company. Key laws include the Companies Act 2013 and Goods and Services Tax Act.</p>
+        <p><strong>Job:</strong> Labour laws differ for each industry. Employees benefit from minimum wages under the Minimum Wages Act, Provident Fund under EPF Act, and Employee State Insurance (ESI) Act.</p>
+        <p><strong>Living:</strong> Affordable lifestyle, mix of private and public services. Aadhar and PAN cards are key documents. The Citizenship Act governs citizenship and naturalization.</p>
+      </div>
+
+      <div id="germany" class="country-info">
+        <h3>🇩🇪 Germany</h3>
+        <p><strong>Business:</strong> Requires registration at the trade office (Gewerbeamt), and often a tax number. Excellent for startups, especially in tech. Key regulations include the Handelsgesetzbuch (HGB) and GmbH law.</p>
+        <p><strong>Job:</strong> The EU Blue Card allows non-EU professionals to work. Strict labor laws (Arbeitsrecht) ensure employee rights, paid vacation, and healthcare.</p>
+        <p><strong>Living:</strong> High standard of living, public health insurance, and strong public infrastructure regulated by Sozialgesetzbuch (SGB).</p>
+      </div>
+
+      <div id="japan" class="country-info">
+        <h3>🇯🇵 Japan</h3>
+        <p><strong>Business:</strong> Requires local office address and Articles of Incorporation. Foreign investors often need a business manager visa. The Companies Act and Commercial Code apply.</p>
+        <p><strong>Job:</strong> Visas vary by profession. Japan has strict work culture, high expectations, and strong respect for seniority. Labor Standards Act governs employment.</p>
+        <p><strong>Living:</strong> Safe and efficient. National health insurance covers most medical expenses. The Health Insurance Act regulates health care.</p>
+      </div>
+
+      <div id="canada" class="country-info">
+        <h3>🇨🇦 Canada</h3>
+        <p><strong>Business:</strong> Easy federal or provincial registration. Start-Up Visa supports innovative entrepreneurs. Key legislation includes the Canada Business Corporations Act.</p>
+        <p><strong>Job:</strong> Express Entry for skilled workers. Employment standards include minimum wage, safety rules, and EI benefits regulated by the Canada Labour Code.</p>
+        <p><strong>Living:</strong> Multicultural, with universal healthcare and quality education under the Canada Health Act.</p>
+      </div>
+
+      <div id="china" class="country-info">
+        <h3>🇨🇳 China</h3>
+        <p><strong>Business:</strong> Requires business license and tax registration. Joint ventures were common; now WFOEs are permitted. Company Law and Foreign Investment Law govern operations.</p>
+        <p><strong>Job:</strong> Z visa needed. Labor law mandates contracts and pays attention to local language compliance under the Labor Contract Law.</p>
+        <p><strong>Living:</strong> Modern cities and tech, but censorship and social scoring systems may affect life. Social Security Law regulates welfare.</p>
+      </div>
+
+      <div id="southkorea" class="country-info">
+        <h3>🇰🇷 South Korea</h3>
+        <p><strong>Business:</strong> Easy to register. Tax incentives for SMEs. Korean-only documents common. The Commercial Act and Framework Act on Small and Medium Enterprises are important.</p>
+        <p><strong>Job:</strong> Visas like E-7 for professionals. Competitive job market, especially in Seoul. Employment laws protect workers’ rights.</p>
+        <p><strong>Living:</strong> Fast internet, modern amenities, and good public healthcare regulated by the National Health Insurance Act.</p>
+      </div>
+
+      <div id="russia" class="country-info">
+        <h3>🇷🇺 Russia</h3>
+        <p><strong>Business:</strong> Foreigners must register companies via local legal rep. Ruble exchange and sanctions pose financial considerations. Civil Code and Tax Code regulate business.</p>
+        <p><strong>Job:</strong> Work permits via employer. Russian language fluency important in job market. Labor Code protects workers.</p>
+        <p><strong>Living:</strong> Cost of living varies; limited freedom, ongoing geopolitical tensions affect expatriates. Health insurance is a mix of public and private.</p>
+      </div>
+    </section>
+
+    <section id="topics">
+      <h2>Legal Topics</h2>
+      <div class="legal-topics">
+        <div class="box" onclick="toggleTopic('businessSetup')">Business Setup</div>
+        <div class="box" onclick="toggleTopic('employmentVisas')">Employment & Visas</div>
+        <div class="box" onclick="toggleTopic('residencyCitizenship')">Residency & Citizenship</div>
+        <div class="box" onclick="toggleTopic('taxFinance')">Tax & Finance</div>
+        <div class="box" onclick="toggleTopic('housingRenting')">Housing & Renting</div>
+        <div class="box" onclick="toggleTopic('healthcareInsurance')">Healthcare & Insurance</div>
+        <div class="box" onclick="toggleTopic('legalRights')">Legal Rights</div>
+      </div>
+
+      <div id="businessSetup" class="topic-info">
+        <h3>Business Setup</h3>
+        <p>
+          Learn about registering businesses, choosing entity types (LLC, corporation, sole proprietorship), licensing, permits, and compliance with local and international laws. Understand filing requirements, governance, and key legislation affecting startups and established firms.
+        </p>
+      </div>
+
+      <div id="employmentVisas" class="topic-info">
+        <h3>Employment & Visas</h3>
+        <p>
+          Overview of work visas, permits, and immigration procedures across major countries. Understand employee rights, labor standards, visa categories, sponsorship requirements, and protections against workplace discrimination.
+        </p>
+      </div>
+
+      <div id="residencyCitizenship" class="topic-info">
+        <h3>Residency & Citizenship</h3>
+        <p>
+          Details on residency permits, citizenship acquisition, naturalization processes, dual citizenship rules, and obligations for immigrants. Learn legal documentation requirements, rights, and responsibilities associated with residency and citizenship in various countries.
+        </p>
+      </div>
+
+      <div id="taxFinance" class="topic-info">
+        <h3>Tax & Finance</h3>
+        <p>
+          Information on tax registration, filing, corporate and personal income taxes, VAT/GST, international tax treaties, financial compliance, accounting standards, and tax planning for individuals and businesses.
+        </p>
+      </div>
+
+      <div id="housingRenting" class="topic-info">
+        <h3>Housing & Renting</h3>
+        <p>
+          Legal guidelines on tenant rights, lease agreements, rent control, eviction rules, property ownership, and housing regulations. Includes information on deposits, maintenance obligations, and dispute resolution.
+        </p>
+      </div>
+
+      <div id="healthcareInsurance" class="topic-info">
+        <h3>Healthcare & Insurance</h3>
+        <p>
+          Overview of healthcare systems, mandatory insurance, public vs private health coverage, social security contributions, and health-related legal protections available to residents and workers.
+        </p>
+      </div>
+
+      <div id="legalRights" class="topic-info">
+        <h3>Legal Rights</h3>
+        <p>
+          Information on consumer rights, anti-discrimination laws, privacy protections, civil liberties, and access to justice. Includes guidance on how to seek legal aid and resolve disputes.
+        </p>
+      </div>
+    </section>
+<section id="donate">
+  <h2>Support KnowLawGo</h2>
+  <p>If you find KnowLawGo helpful, consider supporting us! Scan the QR code below to make a donation using any UPI app:</p>
+  <div style="text-align:center; margin-top: 20px;">
+    <img src="e0e768ab-80cc-44f8-8e6f-ac73b9385007.png" alt="Donate QR Code" style="max-width: 300px; width: 100%; height: auto; border: 1px solid #ccc; border-radius: 10px;" />
+    <p style="margin-top: 10px;">Scan to pay with any UPI app</p>
+  </div>
+</section>
+
+  </main>
+
+    
+    <!-- Welcome Popup -->
+    <div id="welcomePopup" class="popup-overlay">
+      <div class="popup">
+        <h2>Welcome to KnowLawGo 🌍</h2>
+        <p>Explore simplified legal insights across the globe!</p>
+        <button onclick="closePopup()">Got it</button>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>
+      &copy; 2025 KnowLawGo. All rights reserved. | Contact: 
+      <a href="mailto:knowlawgo.qa@gmail.com" style="color: #fff; text-decoration: underline;">
+        knowlawgo.qa@gmail.com
+      </a>
+    </p>
+  </footer>
+
+  <!-- ✅ Chatbot Script -->
+  <script async type='module' src='https://interfaces.zapier.com/assets/web-components/zapier-interfaces/zapier-interfaces.esm.js'></script>
+<zapier-interfaces-chatbot-embed is-popup='true' chatbot-id='cmeybyqly002cp4s0mayegplw'></zapier-interfaces-chatbot-embed>
+</body>
+</html>
